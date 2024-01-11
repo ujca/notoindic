@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ttFont sfntVersion="\x00\x01\x00\x00" ttLibVersion="4.47">
+
+  <name>
+    <namerecord nameID="0" platformID="3" platEncID="1" langID="0x409">
+      Copyright 2022 The Noto Project Authors
+    </namerecord>
+    <namerecord nameID="1" platformID="3" platEncID="1" langID="0x409">
+      Noto Serif Indic
+    </namerecord>
+    <namerecord nameID="2" platformID="3" platEncID="1" langID="0x409">
+      Regular
+    </namerecord>
+    <namerecord nameID="3" platformID="3" platEncID="1" langID="0x409">
+      0.2;UJCA;NotoSansIndic-Regular
+    </namerecord>
+    <namerecord nameID="4" platformID="3" platEncID="1" langID="0x409">
+      Noto Serif Indic Regular
+    </namerecord>
+    <namerecord nameID="5" platformID="3" platEncID="1" langID="0x409">
+      Version 0.2
+    </namerecord>
+    <namerecord nameID="6" platformID="3" platEncID="1" langID="0x409">
+      NotoSerifIndic-Regular
+    </namerecord>
+    <namerecord nameID="7" platformID="3" platEncID="1" langID="0x409">
+      Noto is a trademark of Google LLC.
+    </namerecord>
+    <namerecord nameID="8" platformID="3" platEncID="1" langID="0x409">
+      Studenti ÚJCA FF UK, z.s.
+    </namerecord>
+    <namerecord nameID="9" platformID="3" platEncID="1" langID="0x409">
+      Monotype Design Team; Juan Bruce, Universal Thirst, Indian Type Foundry and the Monotype Design Team.; Universal Thirst, Indian Type Foundry and the Monotype Design Team; Vaibhav Singh and the Monotype Design Team; Juan Bruce; Indian type Foundry, Jelle Bosma, Monotype Design Team; David Williams; Jelle Bosma - Monotype Design Team; Indian Type Foundry, Tom Grace, and the Monotype Design Team
+    </namerecord>
+    <namerecord nameID="10" platformID="3" platEncID="1" langID="0x409">
+      2.013;UJCA;NotoSerif; 2.003;UJCA;NotoSerifBengali-Regular; 2.004;UJCA;NotoSerifDevanagari-Regular; 2.004;UJCA;NotoSerifGrantha-Regular; 2.106;UJCA;NotoSerifGujarati-Regular; 2.004;UJCA;NotoSerifGurmukhi-Regular; 2.005;UJCA;NotoSerifKannada-Regular; 2.005;UJCA;NotoSerifKhojki-Regular; 2.104;UJCA;NotoSerifMalayalam-Regular; 1.051;UJCA;NotoSerifOriya-Regular; 2.007;UJCA;NotoSerifSinhala-Regular; 2.004;UJCA;NotoSerifTamil-Regular; 2.005;UJCA;NotoSerifTelugu-Regular; gftools[0.9.43]</namerecord>
+    <namerecord nameID="11" platformID="3" platEncID="1" langID="0x409">
+      http://www.ujca.cz/
+    </namerecord>
+    <namerecord nameID="13" platformID="3" platEncID="1" langID="0x409">
+      This Font Software is licensed under the SIL Open Font License, Version 1.1. This license is available with a FAQ at: https://scripts.sil.org/OFL
+    </namerecord>
+    <namerecord nameID="14" platformID="3" platEncID="1" langID="0x409">
+      https://scripts.sil.org/OFL
+    </namerecord>
+  </name>
+
+</ttFont>

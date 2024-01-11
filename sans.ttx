@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ttFont sfntVersion="\x00\x01\x00\x00" ttLibVersion="4.47">
+
+  <name>
+    <namerecord nameID="0" platformID="3" platEncID="1" langID="0x409">
+      Copyright 2022 The Noto Project Authors
+    </namerecord>
+    <namerecord nameID="1" platformID="3" platEncID="1" langID="0x409">
+      Noto Sans Indic
+    </namerecord>
+    <namerecord nameID="2" platformID="3" platEncID="1" langID="0x409">
+      Regular
+    </namerecord>
+    <namerecord nameID="3" platformID="3" platEncID="1" langID="0x409">
+      0.2;UJCA;NotoSansIndic-Regular
+    </namerecord>
+    <namerecord nameID="4" platformID="3" platEncID="1" langID="0x409">
+      Noto Sans Indic Regular
+    </namerecord>
+    <namerecord nameID="5" platformID="3" platEncID="1" langID="0x409">
+      Version 0.2
+    </namerecord>
+    <namerecord nameID="6" platformID="3" platEncID="1" langID="0x409">
+      NotoSansIndic-Regular
+    </namerecord>
+    <namerecord nameID="7" platformID="3" platEncID="1" langID="0x409">
+      Noto is a trademark of Google LLC.
+    </namerecord>
+    <namerecord nameID="8" platformID="3" platEncID="1" langID="0x409">
+      Studenti ÚJCA FF UK, z.s.
+    </namerecord>
+    <namerecord nameID="9" platformID="3" platEncID="1" langID="0x409">
+      Muthu Nedumaran; Jelle Bosma - Monotype Design Team; Ek Type &amp; Mukund Gokhale; Monotype Design Team and Neelakash Kshetrimayum; Monotype Design Team, Lewis McGuffie; Jelle Bosma - Monotype Design Team, Universal Thirst; Ek Type; Zachary Quinn Scheuren - Monotype Design Team; Monotype Design Team; Amélie Bonet and Sol Matas
+    </namerecord>
+    <namerecord nameID="10" platformID="3" platEncID="1" langID="0x409">
+      2.013;UJCA;NotoSans-Regular; 2.003;UJCA;NotoSansBengali-Regular; 2.003;UJCA;NotoSansBrahmi-Regular; 2.003;UJCA;NotoSansChakma-Regular; 2.004;UJCA;NotoSansDevanagari-Regular; 2.003;UJCA;NotoSansGrantha-Regular; 2.106;UJCA;NotoSansGujarati-Regular; 1.004;UJCA;NotoSansGunjalaGondi-Regular; 2.004;UJCA;NotoSansGurmukhi-Regular; 2.005;UJCA;NotoSansKaithi-Regular; 2.005;UJCA;NotoSansKannada-Regular; 2.004;UJCA;NotoSansKharoshthi-Regular; 2.005;UJCA;NotoSansKhojki-Regular; 2.004;UJCA;NotoSansKhudawadi-Regular; 2.006;UJCA;NotoSansLepcha-Regular; 2.004;UJCA;NotoSansLimbu-Regular; 2.003;UJCA;NotoSansMahajani-Regular; 2.104;UJCA;NotoSansMalayalam-Regular; 1.004;UJCA;NotoSansMasaramGondi-Regular; 2.002;UJCA;NotoSansMeeteiMayek-Regular; 2.004;UJCA;NotoSansModi-Regular; 2.001;UJCA;NotoSansMro-Regular; 2.002;UJCA;NotoSansMultani-Regular; 1.000;UJCA;NotoSansNagMundari-Regular; 1.002;UJCA;NotoSansNandinagari-Regular; 2.007;UJCA;NotoSansNewa-Regular; 2.003;UJCA;NotoSansOlChiki-Regular; 2.005;UJCA;NotoSansOriya-Regular; 2.001;UJCA;NotoSansSaurashtra-Regular; 2.006;UJCA;NotoSansSharada-Regular; 2.005;UJCA;NotoSansSiddham-Regular; 2.006;UJCA;NotoSansSinhala-Regular; 2.004;UJCA;NotoSansSylotiNagri-Regular; 2.004;UJCA;NotoSansTamil-Regular; 2.001;UJCA;NotoSansTamilSupplement-Regular; 1.505;UJCA;NotoSansTangsa-Regular; 2.005;UJCA;NotoSansTelugu-Regular; 2.003;UJCA;NotoSansTirhuta-Regular; gftools[0.9.43]</namerecord>
+    <namerecord nameID="11" platformID="3" platEncID="1" langID="0x409">
+      http://www.ujca.cz/
+    </namerecord>
+    <namerecord nameID="13" platformID="3" platEncID="1" langID="0x409">
+      This Font Software is licensed under the SIL Open Font License, Version 1.1. This license is available with a FAQ at: https://scripts.sil.org/OFL
+    </namerecord>
+    <namerecord nameID="14" platformID="3" platEncID="1" langID="0x409">
+      https://scripts.sil.org/OFL
+    </namerecord>
+  </name>
+
+</ttFont>
