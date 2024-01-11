@@ -1,4 +1,4 @@
-Requires to run:
+Builds on Windows, prerequirements:
 
 * `yq.exe` (https://github.com/mikefarah/yq)
 * `python` (https://www.python.org)
