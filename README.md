@@ -4,3 +4,5 @@ Requires to run:
 * `python` (https://www.python.org)
 * `pip install pyftmerge` (https://github.com/fonttools/fonttools)
 * `pip install gftools` (https://github.com/googlefonts/gftools)
+
+ttx name tables maintained manually
