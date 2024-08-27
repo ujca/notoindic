@@ -16,7 +16,7 @@ jobs:
 
       - name: Update submodules
         run: |
-          git submodule update --remote --depth 1
+          git submodule update --init --remote --depth 1
 
       - name: Commit
         run: |
