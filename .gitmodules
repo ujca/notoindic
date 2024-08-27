@@ -1,0 +1,111 @@
+[submodule "latin-greek-cyrillic"]
+	path = latin-greek-cyrillic
+	url = https://github.com/notofonts/latin-greek-cyrillic
+[submodule "bengali"]
+	path = bengali
+	url = https://github.com/notofonts/bengali
+[submodule "brahmi"]
+	path = brahmi
+	url = https://github.com/notofonts/brahmi
+[submodule "chakma"]
+	path = chakma
+	url = https://github.com/notofonts/chakma
+[submodule "devanagari"]
+	path = devanagari
+	url = https://github.com/notofonts/devanagari
+[submodule "grantha"]
+	path = grantha
+	url = https://github.com/notofonts/grantha
+[submodule "gujarati"]
+	path = gujarati
+	url = https://github.com/notofonts/gujarati
+[submodule "gunjala-gondi"]
+	path = gunjala-gondi
+	url = https://github.com/notofonts/gunjala-gondi
+[submodule "gurmukhi"]
+	path = gurmukhi
+	url = https://github.com/notofonts/gurmukhi
+[submodule "kaithi"]
+	path = kaithi
+	url = https://github.com/notofonts/kaithi
+[submodule "kannada"]
+	path = kannada
+	url = https://github.com/notofonts/kannada
+[submodule "kharoshthi"]
+	path = kharoshthi
+	url = https://github.com/notofonts/kharoshthi
+[submodule "khojki"]
+	path = khojki
+	url = https://github.com/notofonts/khojki
+[submodule "khudawadi"]
+	path = khudawadi
+	url = https://github.com/notofonts/khudawadi
+[submodule "lepcha"]
+	path = lepcha
+	url = https://github.com/notofonts/lepcha
+[submodule "limbu"]
+	path = limbu
+	url = https://github.com/notofonts/limbu
+[submodule "mahajani"]
+	path = mahajani
+	url = https://github.com/notofonts/mahajani
+[submodule "malayalam"]
+	path = malayalam
+	url = https://github.com/notofonts/malayalam
+[submodule "masaram-gondi"]
+	path = masaram-gondi
+	url = https://github.com/notofonts/masaram-gondi
+[submodule "meetei-mayek"]
+	path = meetei-mayek
+	url = https://github.com/notofonts/meetei-mayek
+[submodule "modi"]
+	path = modi
+	url = https://github.com/notofonts/modi
+[submodule "mro"]
+	path = mro
+	url = https://github.com/notofonts/mro
+[submodule "multani"]
+	path = multani
+	url = https://github.com/notofonts/multani
+[submodule "nag-mundari"]
+	path = nag-mundari
+	url = https://github.com/notofonts/nag-mundari
+[submodule "nandinagari"]
+	path = nandinagari
+	url = https://github.com/notofonts/nandinagari
+[submodule "newa"]
+	path = newa
+	url = https://github.com/notofonts/newa
+[submodule "ol-chiki"]
+	path = ol-chiki
+	url = https://github.com/notofonts/ol-chiki
+[submodule "oriya"]
+	path = oriya
+	url = https://github.com/notofonts/oriya
+[submodule "saurashtra"]
+	path = saurashtra
+	url = https://github.com/notofonts/saurashtra
+[submodule "sharada"]
+	path = sharada
+	url = https://github.com/notofonts/sharada
+[submodule "siddham"]
+	path = siddham
+	url = https://github.com/notofonts/siddham
+[submodule "sinhala"]
+	path = sinhala
+	url = https://github.com/notofonts/sinhala
+[submodule "syloti-nagri"]
+	path = syloti-nagri
+	url = https://github.com/notofonts/syloti-nagri
+[submodule "tamil"]
+	path = tamil
+	url = https://github.com/notofonts/tamil
+[submodule "tangsa"]
+	path = tangsa
+	url = https://github.com/notofonts/tangsa
+[submodule "telugu"]
+	path = telugu
+	url = https://github.com/notofonts/telugu
+[submodule "tirhuta"]
+	path = tirhuta
+	url = https://github.com/notofonts/tirhuta
