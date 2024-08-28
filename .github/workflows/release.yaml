@@ -1,0 +1,61 @@
+name: New Release
+
+on:
+  workflow_dispatch:
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+        with: 
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Init submodules
+        run: git submodule update --init --depth 1
+
+      - name: Install yq
+        run: brew install yq
+
+      - name: YAML
+        run: find -name "config*.yaml" -exec yq "with_entries(select(.key==\"familyName\" or .key==\"sources\"))|(.buildOTF=false)|(.buildVariable=false)" {} -i \;
+
+      - name: Install Python
+        uses: actions/setup-python@v4
+        run: pip install pyftmerge gftools
+
+      - name: Build fonts
+        run: |
+          gftools builder latin-greek-cyrillic\sources\config-sans.yaml --no-autohint
+          gftools builder latin-greek-cyrillic\sources\config-serif.yaml --no-autohint
+          find -name "config*.yaml" -not -path "./latin*" -not -name "*-ui.yaml" -exec gftools builder {} --no-autohint \;
+
+      - name: Copy fonts
+        run: |
+          md fonts
+          cp -r latin-greek-cyrillic\fonts fonts
+          git submodule foreach 'cp -r $sm_path\fonts fonts'
+          cd fonts/ttf
+          ls -1 NotoSans*-Regular.ttf >sans.txt
+          ls -1 NotoSerif*-Regular.ttf >serif.txt
+
+      - name: Merge metadata
+        uses: actions/setup-dotnet@v4
+        run: |
+          ttx --input-file sans.txt 
+          ttx --input-file serif.txt
+          dotnet run .github/workflows/merge.csproj -- sans.txt ../../sans.ttx "Noto Sans Indic"
+          dotnet run .github/workflows/merge.csproj -- serif.txt ../../serif.ttx "Noto Serif Indic"
+
+      - name: Merge fonts
+        run: |
+          pyftmerge --input-file=sans.txt --output-file=../../NotoSansIndic.ttf --import-file=../../sans.ttx --drop-tables=vhea,vmtx --verbose
+          pyftmerge --input-file=serif.txt --output-file=../../NotoSerifIndic.ttf --import-file=../../serif.ttx --drop-tables=vhea,vmtx --verbose
+        
+      - name: Create release
+        run: |
+          git add *.ttx
+          git commit -m "$RELEAE_VERSION bump"
+          git push
+          gh release create v$RELEASE_VERSION -t "Noto Indic v$RELEASE_VERSION" -F release.md ../../NotoSansIndic.ttf ../../NotoSerifIndic.ttf
