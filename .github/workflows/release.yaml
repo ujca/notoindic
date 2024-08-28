@@ -4,58 +4,73 @@ on:
   workflow_dispatch:
 
 jobs:
-  update:
+  release:
     runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v4
         with: 
           token: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Init submodules
-        run: git submodule update --init --depth 1
-
-      - name: Install yq
-        run: brew install yq
+          submodules: 'true' 
 
       - name: YAML
-        run: find -name "config*.yaml" -exec yq "with_entries(select(.key==\"familyName\" or .key==\"sources\"))|(.buildOTF=false)|(.buildVariable=false)" {} -i \;
+        uses: mikefarah/yq@master
+        with:
+          cmd: find -name "config*.yaml" -exec yq 'with_entries(select(.key=="familyName" or .key=="sources"))|(.buildOTF=false)|(.buildVariable=false)|(.buildWebfont=false)|(.buildSmallCap=false)' {} -i \;
 
       - name: Install Python
-        uses: actions/setup-python@v4
-        run: pip install pyftmerge gftools
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+          cache: 'pip'
+
+      - name: Install Python modules  
+        run: pip install fonttools gftools
 
       - name: Build fonts
         run: |
-          gftools builder latin-greek-cyrillic\sources\config-sans.yaml --no-autohint
-          gftools builder latin-greek-cyrillic\sources\config-serif.yaml --no-autohint
-          find -name "config*.yaml" -not -path "./latin*" -not -name "*-ui.yaml" -exec gftools builder {} --no-autohint \;
+          gftools builder ol-chiki/sources/config-sans-ol-chiki.yaml
+          gftools builder brahmi/sources/config-sans-brahmi.yaml
+          gftools builder kannada/sources/config-serif-kannada.yaml
+#          gftools builder latin-greek-cyrillic/sources/config-sans.yaml
+#          gftools builder latin-greek-cyrillic/sources/config-serif.yaml
+#          find -name "config*.yaml" -not -path "./latin*" -not -name "*-ui.yaml" -exec gftools builder {} \;
 
       - name: Copy fonts
         run: |
-          md fonts
-          cp -r latin-greek-cyrillic\fonts fonts
-          git submodule foreach 'cp -r $sm_path\fonts fonts'
+          mkdir fonts
+          rsync --recursive ol-chiki/fonts/ fonts/
+          rsync --recursive brahmi/fonts/ fonts/
+          rsync --recursive kannada/fonts/ fonts/
+          dir --recursive fonts/
           cd fonts/ttf
           ls -1 NotoSans*-Regular.ttf >sans.txt
           ls -1 NotoSerif*-Regular.ttf >serif.txt
+#          rsync --recursive latin-greek-cyrillic/fonts/ fonts/
+#          git submodule foreach 'cp -r $sm_path/fonts fonts'
+
+      - name: Install .NET
+        uses: actions/setup-dotnet@v4
 
       - name: Merge metadata
-        uses: actions/setup-dotnet@v4
+        working-directory: ./fonts/ttf
         run: |
-          ttx --input-file sans.txt 
-          ttx --input-file serif.txt
-          dotnet run .github/workflows/merge.csproj -- sans.txt ../../sans.ttx "Noto Sans Indic"
-          dotnet run .github/workflows/merge.csproj -- serif.txt ../../serif.ttx "Noto Serif Indic"
+          find -name "*-Regular.ttf" -exec ttx -t name {} \;
+          dotnet run --project ../../.github/workflows/merge.csproj -- sans.txt ../../sans.ttx "Noto Sans Indic"
+          dotnet run --project ../../.github/workflows/merge.csproj -- serif.txt ../../serif.ttx "Noto Serif Indic"
+          cat ../../sans.ttx
+          cat ../../serif.ttx
+          cat ../../release.md
 
       - name: Merge fonts
         run: |
-          pyftmerge --input-file=sans.txt --output-file=../../NotoSansIndic.ttf --import-file=../../sans.ttx --drop-tables=vhea,vmtx --verbose
-          pyftmerge --input-file=serif.txt --output-file=../../NotoSerifIndic.ttf --import-file=../../serif.ttx --drop-tables=vhea,vmtx --verbose
+          pyftmerge --input-file=fonts/ttf/sans.txt --output-file=NotoSansIndic.ttf --import-file=sans.ttx --drop-tables=vhea,vmtx --verbose
+          pyftmerge --input-file=fonts/ttf/serif.txt --output-file=NotoSerifIndic.ttf --import-file=serif.ttx --drop-tables=vhea,vmtx --verbose
         
       - name: Create release
         run: |
           git add *.ttx
-          git commit -m "$RELEAE_VERSION bump"
+          git add release.md
+          git commit -m "$RELEASE_VERSION bump"
           git push
-          gh release create v$RELEASE_VERSION -t "Noto Indic v$RELEASE_VERSION" -F release.md ../../NotoSansIndic.ttf ../../NotoSerifIndic.ttf
+          gh release create v$RELEASE_VERSION --draft --title "Noto Indic v$RELEASE_VERSION" --notes-file release.md NotoSansIndic.ttf NotoSerifIndic.ttf
