@@ -11,6 +11,7 @@ class Program
     {
         string inputFile = args[0];
         string outputFile = args[1];
+        string header = args[2];
 
         SortedSet<string> versions = new();
         SortedSet<string> authors = new();
@@ -38,22 +39,22 @@ class Program
             switch ((int)namerecord.Attribute("nameID"))
             {
                 case 3:
-                    string[] versionTokens = namerecord.Value.TrimStart().Split(';');
+                    string[] versionTokens = namerecord.Value.Trim().Split(';');
                     Version version = Version.Parse(versionTokens[0]);
-                    newVersion ??= new Version(1, version.Minor + 1, version.Build, version.Revision).ToString(2);
-                    namerecord.Value = string.Join(";", versionTokens);
+                    newVersion ??= new Version(1, version.Minor + 1).ToString(2);
+                    namerecord.Value = PreserveWhitespace(namerecord.Value, string.Join(";", versionTokens));
                     break;
 
                 case 5:
-                    namerecord.Value = "Version " + newVersion;
+                    namerecord.Value = PreserveWhitespace(namerecord.Value, "Version " + newVersion);
                     break;
 
                 case 9:
-                    namerecord.Value = string.Join("; ", authors);
+                    namerecord.Value = PreserveWhitespace(namerecord.Value, string.Join("; ", authors));
                     break;
 
                 case 10:
-                    namerecord.Value = string.Join("; ", versions);
+                    namerecord.Value = PreserveWhitespace(namerecord.Value, string.Join("; ", versions));
                     break;
             }
 
@@ -61,11 +62,31 @@ class Program
         outputXml.Save(outputFile);
 
         StringBuilder release = new StringBuilder();
-        release.AppendLine("## " + args[2]);
+        release.AppendLine("## " + header);
         foreach (string v in versions)
             release.AppendLine("* " + v);
         release.AppendLine();
 
         File.AppendAllText("release.md", release.ToString());
+
+        Console.WriteLine("RELEASE_VERSION=" + newVersion);
+    }
+
+    static string PreserveWhitespace(string whitespace, string value)
+    {
+        if (string.IsNullOrEmpty(whitespace))
+            return value;
+
+        int valueStart = 0;
+        for (; valueStart < whitespace.Length; valueStart++)
+            if (!char.IsWhiteSpace(whitespace, valueStart))
+                break;
+
+        int valueLast = whitespace.Length - 1;
+        for (; valueLast >= valueStart; valueLast--)
+            if (!char.IsWhiteSpace(whitespace, valueLast))
+                break;
+
+        return whitespace.Substring(0, valueStart) + value + whitespace.Substring(valueLast + 1);
     }
 }
