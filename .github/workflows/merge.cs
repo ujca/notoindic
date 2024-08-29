@@ -7,13 +7,23 @@ using System.Xml.Linq;
 
 class Program
 {
+    class NameComparer : IComparer<string>
+    {
+        public int Compare(string x, string y)
+        {
+            int ix = x.LastIndexOf(';') + 1;
+            int iy = y.LastIndexOf(';') + 1;
+            return string.CompareOrdinal(x.Substring(ix), y.Substring(iy));
+        }
+    }
+
     static void Main(string[] args)
     {
         string inputFile = args[0];
         string outputFile = args[1];
         string header = args[2];
 
-        SortedSet<string> versions = new();
+        SortedSet<string> versions = new(new NameComparer());
         SortedSet<string> authors = new();
 
         foreach (string fontFile in File.ReadAllLines(inputFile))
@@ -42,6 +52,7 @@ class Program
                     string[] versionTokens = namerecord.Value.Trim().Split(';');
                     Version version = Version.Parse(versionTokens[0]);
                     newVersion ??= new Version(1, version.Minor + 1).ToString(2);
+                    versionTokens[0] = newVersion;
                     namerecord.Value = PreserveWhitespace(namerecord.Value, string.Join(";", versionTokens));
                     break;
 
