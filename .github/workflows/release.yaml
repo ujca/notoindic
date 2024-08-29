@@ -29,25 +29,19 @@ jobs:
 
       - name: Build fonts
         run: |
-          gftools builder ol-chiki/sources/config-sans-ol-chiki.yaml
-          gftools builder brahmi/sources/config-sans-brahmi.yaml
-          gftools builder kannada/sources/config-serif-kannada.yaml
-#          gftools builder latin-greek-cyrillic/sources/config-sans.yaml
-#          gftools builder latin-greek-cyrillic/sources/config-serif.yaml
-#          find -name "config*.yaml" -not -path "./latin*" -not -name "*-ui.yaml" -exec gftools builder {} \;
+          gftools builder latin-greek-cyrillic/sources/config-sans.yaml
+          gftools builder latin-greek-cyrillic/sources/config-serif.yaml
+          find -name "config*.yaml" -not -path "./latin*" -not -name "*-ui.yaml" -exec gftools builder {} \;
 
       - name: Copy fonts
         run: |
           mkdir fonts
-          rsync --recursive ol-chiki/fonts/ fonts/
-          rsync --recursive brahmi/fonts/ fonts/
-          rsync --recursive kannada/fonts/ fonts/
+          rsync --recursive latin-greek-cyrillic/fonts/ fonts/
+          git submodule foreach 'rsync --recursive fonts/ ../fonts/'
           dir --recursive fonts/
           cd fonts/ttf
           ls -1 NotoSans*-Regular.ttf >sans.txt
           ls -1 NotoSerif*-Regular.ttf >serif.txt
-#          rsync --recursive latin-greek-cyrillic/fonts/ fonts/
-#          git submodule foreach 'cp -r $sm_path/fonts fonts'
 
       - name: Install .NET
         uses: actions/setup-dotnet@v4
@@ -79,6 +73,6 @@ jobs:
           git config user.name "GitHub Release Action"
           git add *.ttx
           git add release.md
-          git commit -m "$RELEASE_VERSION bump"
+          git commit -m "v$RELEASE_VERSION bump"
           git push
-          gh release create v$RELEASE_VERSION --draft --title "Noto Indic v$RELEASE_VERSION" --notes-file release.md NotoSansIndic.ttf NotoSerifIndic.ttf
+          gh release create v$RELEASE_VERSION --title "Noto Indic v$RELEASE_VERSION" --notes-file release.md NotoSansIndic.ttf NotoSerifIndic.ttf
