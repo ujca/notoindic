@@ -7,13 +7,24 @@ using System.Xml.Linq;
 
 class Program
 {
+    class NameComparer : IComparer<string>
+    {
+        public int Compare(string x, string y)
+        {
+            int ix = x.LastIndexOf(';') + 1;
+            int iy = y.LastIndexOf(';') + 1;
+            return string.CompareOrdinal(x.Substring(ix), y.Substring(iy));
+        }
+    }
+
     static void Main(string[] args)
     {
         string inputFile = args[0];
         string outputFile = args[1];
         string header = args[2];
+        string notes = args[3];
 
-        SortedSet<string> versions = new();
+        SortedSet<string> versions = new(new NameComparer());
         SortedSet<string> authors = new();
 
         foreach (string fontFile in File.ReadAllLines(inputFile))
@@ -32,8 +43,17 @@ class Program
                 }
         }
 
+        StringBuilder release = new StringBuilder();
+        release.AppendLine("## " + header);
+        foreach (string v in versions)
+            release.AppendLine("* " + v);
+        release.AppendLine();
+
+        bool minorUpdate = File.Exists(notes) && File.ReadAllText(notes).TrimEnd() == release.ToString().TrimEnd();
+        File.WriteAllText(notes, release.ToString());
+
         XDocument outputXml = XDocument.Load(outputFile, LoadOptions.PreserveWhitespace);
-        string newVersion = Environment.GetEnvironmentVariable("RELEASE_VERSION");
+        string newVersion = null;
 
         foreach (var namerecord in outputXml.Descendants("namerecord"))
             switch ((int)namerecord.Attribute("nameID"))
@@ -41,7 +61,8 @@ class Program
                 case 3:
                     string[] versionTokens = namerecord.Value.Trim().Split(';');
                     Version version = Version.Parse(versionTokens[0]);
-                    newVersion ??= new Version(1, version.Minor + 1).ToString(2);
+                    newVersion ??= minorUpdate ? new Version(1, version.Minor, Math.Max(1, version.Build + 0)).ToString(3) : new Version(1, version.Minor + 1).ToString(2);
+                    versionTokens[0] = newVersion;
                     namerecord.Value = PreserveWhitespace(namerecord.Value, string.Join(";", versionTokens));
                     break;
 
@@ -58,18 +79,9 @@ class Program
                     break;
             }
 
-        Environment.SetEnvironmentVariable("RELEASE_VERSION", newVersion, EnvironmentVariableTarget.User);
         outputXml.Save(outputFile);
 
-        StringBuilder release = new StringBuilder();
-        release.AppendLine("## " + header);
-        foreach (string v in versions)
-            release.AppendLine("* " + v);
-        release.AppendLine();
-
-        File.AppendAllText("release.md", release.ToString());
-
-        Console.WriteLine("RELEASE_VERSION=" + newVersion);
+        Console.WriteLine("RELEASE_VERSION=" + DateTime.Now.ToString("yyyy-MM-dd"));
     }
 
     static string PreserveWhitespace(string whitespace, string value)

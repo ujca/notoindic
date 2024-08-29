@@ -2,16 +2,19 @@ name: New Release
 
 on:
   workflow_dispatch:
+  workflow_call:
 
 jobs:
   release:
     runs-on: ubuntu-latest
+    if: ${{ github.event.workflow_run.conclusion != 'failure' }}
 
     steps:
       - uses: actions/checkout@v4
         with: 
           token: ${{ secrets.GITHUB_TOKEN }}
-          submodules: 'true' 
+          submodules: 'true'
+          ref: 'main'
 
       - name: YAML
         uses: mikefarah/yq@master
@@ -29,25 +32,20 @@ jobs:
 
       - name: Build fonts
         run: |
-          gftools builder ol-chiki/sources/config-sans-ol-chiki.yaml
-          gftools builder brahmi/sources/config-sans-brahmi.yaml
-          gftools builder kannada/sources/config-serif-kannada.yaml
-#          gftools builder latin-greek-cyrillic/sources/config-sans.yaml
-#          gftools builder latin-greek-cyrillic/sources/config-serif.yaml
-#          find -name "config*.yaml" -not -path "./latin*" -not -name "*-ui.yaml" -exec gftools builder {} \;
+          gftools builder latin-greek-cyrillic/sources/config-sans.yaml
+          gftools builder latin-greek-cyrillic/sources/config-serif.yaml
+          find -name "config*.yaml" -not -path "./latin*" -not -name "*-ui.yaml" -exec gftools builder {} \;
 
       - name: Copy fonts
         run: |
           mkdir fonts
-          rsync --recursive ol-chiki/fonts/ fonts/
-          rsync --recursive brahmi/fonts/ fonts/
-          rsync --recursive kannada/fonts/ fonts/
+          rsync --recursive latin-greek-cyrillic/fonts/ fonts/
+          git submodule foreach 'rsync --recursive fonts/ ../fonts/'
           dir --recursive fonts/
           cd fonts/ttf
+          rm *UI-Regular.ttf
           ls -1 NotoSans*-Regular.ttf >sans.txt
           ls -1 NotoSerif*-Regular.ttf >serif.txt
-#          rsync --recursive latin-greek-cyrillic/fonts/ fonts/
-#          git submodule foreach 'cp -r $sm_path/fonts fonts'
 
       - name: Install .NET
         uses: actions/setup-dotnet@v4
@@ -58,12 +56,10 @@ jobs:
         working-directory: ./fonts/ttf
         run: |
           find -name "*-Regular.ttf" -exec ttx -t name {} \;
-          dotnet run --project ../../.github/workflows/merge.csproj -- sans.txt ../../sans.ttx "Noto Sans Indic" >> $GITHUB_ENV
-          dotnet run --project ../../.github/workflows/merge.csproj -- serif.txt ../../serif.ttx "Noto Serif Indic"
-          cp --force release.md ../../
+          dotnet run --project ../../.github/workflows/merge.csproj -- sans.txt ../../sans.ttx "Noto Sans Indic" ../../sans.md >> $GITHUB_ENV
+          dotnet run --project ../../.github/workflows/merge.csproj -- serif.txt ../../serif.ttx "Noto Serif Indic" ../../serif.md
           cat ../../sans.ttx
           cat ../../serif.ttx
-          cat ../../release.md
 
       - name: Merge fonts
         working-directory: ./fonts/ttf
@@ -78,7 +74,10 @@ jobs:
           git config user.email "actions@github.com"
           git config user.name "GitHub Release Action"
           git add *.ttx
-          git add release.md
-          git commit -m "$RELEASE_VERSION bump"
+          git add sans.md
+          git add serif.md
+          git commit -m "$RELEASE_VERSION release"
           git push
-          gh release create v$RELEASE_VERSION --draft --title "Noto Indic v$RELEASE_VERSION" --notes-file release.md NotoSansIndic.ttf NotoSerifIndic.ttf
+          cat sans.md > release.md
+          cat serif.md >> release.md
+          gh release create $RELEASE_VERSION --title "Noto Indic" --notes-file release.md NotoSansIndic.ttf NotoSerifIndic.ttf

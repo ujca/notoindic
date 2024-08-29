@@ -1,8 +1,14 @@
-Builds on Windows, prerequirements:
+﻿# Noto Indic font
 
-* `yq.exe` (https://github.com/mikefarah/yq)
-* `python` (https://www.python.org)
-* `pip install pyftmerge` (https://github.com/fonttools/fonttools)
-* `pip install gftools` (https://github.com/googlefonts/gftools)
+This is a single font file combining all fonts from the Google Noto project for Indic scripts. 
+It also includes the basic Noto font for Latin/Greek/Cyrillic.
+The fonts are merged using [pyftmerge](https://fonttools.readthedocs.io/en/latest/index.html).
 
-ttx name tables maintained manually
+> [!NOTE]
+> Only Regular instance of True-Type font is produced.
+> Both **Noto Sans Indic** and **Noto Serif Indic** fonts are available, 
+> however, the sans variant covers considerably more scripts than the serif variant. 
+> For full list of fonts and their versions used in production of the Noto Indic font
+> see the release notes resp. [sans.md](sans.md) and [serif.md](serif.md).
+
+### 👉 [Download the latest release](https://github.com/ujca/notoindic/releases/latest)
