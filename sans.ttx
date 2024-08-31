@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <ttFont sfntVersion="\x00\x01\x00\x00" ttLibVersion="4.47">
 
   <name>
@@ -12,13 +12,13 @@
       Regular
     </namerecord>
     <namerecord nameID="3" platformID="3" platEncID="1" langID="0x409">
-      0.2;UJCA;NotoSansIndic-Regular
+      1.3;UJCA;NotoSansIndic-Regular
     </namerecord>
     <namerecord nameID="4" platformID="3" platEncID="1" langID="0x409">
       Noto Sans Indic Regular
     </namerecord>
     <namerecord nameID="5" platformID="3" platEncID="1" langID="0x409">
-      Version 0.2
+      Version 1.3
     </namerecord>
     <namerecord nameID="6" platformID="3" platEncID="1" langID="0x409">
       NotoSansIndic-Regular
@@ -30,10 +30,10 @@
       Studenti ÚJCA FF UK, z.s.
     </namerecord>
     <namerecord nameID="9" platformID="3" platEncID="1" langID="0x409">
-      Muthu Nedumaran; Jelle Bosma - Monotype Design Team; Ek Type &amp; Mukund Gokhale; Monotype Design Team and Neelakash Kshetrimayum; Monotype Design Team, Lewis McGuffie; Jelle Bosma - Monotype Design Team, Universal Thirst; Ek Type; Zachary Quinn Scheuren - Monotype Design Team; Monotype Design Team; Amélie Bonet and Sol Matas
+      Amélie Bonet and Sol Matas; David Williams; Ek Type; Ek Type &amp; Mukund Gokhale; Jelle Bosma - Monotype Design Team; Jelle Bosma - Monotype Design Team, Universal Thirst; Monotype Design Team; Monotype Design Team and Neelakash Kshetrimayum; Monotype Design Team, Lewis McGuffie; Muthu Nedumaran; Zachary Quinn Scheuren - Monotype Design Team
     </namerecord>
     <namerecord nameID="10" platformID="3" platEncID="1" langID="0x409">
-      2.013;UJCA;NotoSans-Regular; 2.003;UJCA;NotoSansBengali-Regular; 2.003;UJCA;NotoSansBrahmi-Regular; 2.003;UJCA;NotoSansChakma-Regular; 2.004;UJCA;NotoSansDevanagari-Regular; 2.003;UJCA;NotoSansGrantha-Regular; 2.106;UJCA;NotoSansGujarati-Regular; 1.004;UJCA;NotoSansGunjalaGondi-Regular; 2.004;UJCA;NotoSansGurmukhi-Regular; 2.005;UJCA;NotoSansKaithi-Regular; 2.005;UJCA;NotoSansKannada-Regular; 2.004;UJCA;NotoSansKharoshthi-Regular; 2.005;UJCA;NotoSansKhojki-Regular; 2.004;UJCA;NotoSansKhudawadi-Regular; 2.006;UJCA;NotoSansLepcha-Regular; 2.004;UJCA;NotoSansLimbu-Regular; 2.003;UJCA;NotoSansMahajani-Regular; 2.104;UJCA;NotoSansMalayalam-Regular; 1.004;UJCA;NotoSansMasaramGondi-Regular; 2.002;UJCA;NotoSansMeeteiMayek-Regular; 2.004;UJCA;NotoSansModi-Regular; 2.001;UJCA;NotoSansMro-Regular; 2.002;UJCA;NotoSansMultani-Regular; 1.000;UJCA;NotoSansNagMundari-Regular; 1.002;UJCA;NotoSansNandinagari-Regular; 2.007;UJCA;NotoSansNewa-Regular; 2.003;UJCA;NotoSansOlChiki-Regular; 2.005;UJCA;NotoSansOriya-Regular; 2.001;UJCA;NotoSansSaurashtra-Regular; 2.006;UJCA;NotoSansSharada-Regular; 2.005;UJCA;NotoSansSiddham-Regular; 2.006;UJCA;NotoSansSinhala-Regular; 2.004;UJCA;NotoSansSylotiNagri-Regular; 2.004;UJCA;NotoSansTamil-Regular; 2.001;UJCA;NotoSansTamilSupplement-Regular; 1.505;UJCA;NotoSansTangsa-Regular; 2.005;UJCA;NotoSansTelugu-Regular; 2.003;UJCA;NotoSansTirhuta-Regular; gftools[0.9.43]</namerecord>
+      2.013;UJCA;NotoSans-Regular; 2.003;UJCA;NotoSansBengali-Regular; 2.004;UJCA;NotoSansBrahmi-Regular; 2.003;UJCA;NotoSansChakma-Regular; 2.006;UJCA;NotoSansDevanagari-Regular; 2.005;UJCA;NotoSansGrantha-Regular; 2.106;UJCA;NotoSansGujarati-Regular; 1.004;UJCA;NotoSansGunjalaGondi-Regular; 2.004;UJCA;NotoSansGurmukhi-Regular; 2.006;UJCA;NotoSansKaithi-Regular; 2.005;UJCA;NotoSansKannada-Regular; 2.004;UJCA;NotoSansKharoshthi-Regular; 2.004;UJCA;NotoSansKhudawadi-Regular; 2.006;UJCA;NotoSansLepcha-Regular; 2.005;UJCA;NotoSansLimbu-Regular; 2.003;UJCA;NotoSansMahajani-Regular; 2.104;UJCA;NotoSansMalayalam-Regular; 1.005;UJCA;NotoSansMasaramGondi-Regular; 2.002;UJCA;NotoSansMeeteiMayek-Regular; 2.004;UJCA;NotoSansModi-Regular; 2.001;UJCA;NotoSansMro-Regular; 2.002;UJCA;NotoSansMultani-Regular; 1.001;UJCA;NotoSansNagMundari-Regular; 1.002;UJCA;NotoSansNandinagari-Regular; 2.007;UJCA;NotoSansNewa-Regular; 2.003;UJCA;NotoSansOlChiki-Regular; 2.006;UJCA;NotoSansOriya-Regular; 2.001;UJCA;NotoSansSaurashtra-Regular; 2.006;UJCA;NotoSansSharada-Regular; 2.005;UJCA;NotoSansSiddham-Regular; 2.006;UJCA;NotoSansSinhala-Regular; 2.004;UJCA;NotoSansSylotiNagri-Regular; 2.004;UJCA;NotoSansTamil-Regular; 2.001;UJCA;NotoSansTamilSupplement-Regular; 1.506;UJCA;NotoSansTangsa-Regular; 2.006;UJCA;NotoSansTelugu-Regular; 2.003;UJCA;NotoSansTirhuta-Regular</namerecord>
     <namerecord nameID="11" platformID="3" platEncID="1" langID="0x409">
       http://www.ujca.cz/
     </namerecord>
