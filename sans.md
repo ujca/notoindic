@@ -1,5 +1,5 @@
 ## Noto Sans Indic
-* 2.013;UJCA;NotoSans-Regular
+* 2.014;UJCA;NotoSans-Regular
 * 2.003;UJCA;NotoSansBengali-Regular
 * 2.004;UJCA;NotoSansBrahmi-Regular
 * 2.003;UJCA;NotoSansChakma-Regular
