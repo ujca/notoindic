@@ -9,7 +9,7 @@
 * 1.004;UJCA;NotoSansGunjalaGondi-Regular
 * 2.004;UJCA;NotoSansGurmukhi-Regular
 * 2.006;UJCA;NotoSansKaithi-Regular
-* 2.005;UJCA;NotoSansKannada-Regular
+* 2.006;UJCA;NotoSansKannada-Regular
 * 2.004;UJCA;NotoSansKharoshthi-Regular
 * 2.004;UJCA;NotoSansKhudawadi-Regular
 * 2.006;UJCA;NotoSansLepcha-Regular
