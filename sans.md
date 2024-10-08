@@ -22,7 +22,7 @@
 * 2.001;UJCA;NotoSansMro-Regular
 * 2.002;UJCA;NotoSansMultani-Regular
 * 1.001;UJCA;NotoSansNagMundari-Regular
-* 1.002;UJCA;NotoSansNandinagari-Regular
+* 1.003;UJCA;NotoSansNandinagari-Regular
 * 2.007;UJCA;NotoSansNewa-Regular
 * 2.003;UJCA;NotoSansOlChiki-Regular
 * 2.006;UJCA;NotoSansOriya-Regular
