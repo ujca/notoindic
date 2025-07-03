@@ -1,6 +1,6 @@
 ## Noto Serif Indic
 * 2.015;UJCA;NotoSerif-Regular
-* 2.003;UJCA;NotoSerifBengali-Regular
+* 3.000;UJCA;NotoSerifBengali-Regular
 * 2.006;UJCA;NotoSerifDevanagari-Regular
 * 2.005;UJCA;NotoSerifGrantha-Regular
 * 2.106;UJCA;NotoSerifGujarati-Regular
